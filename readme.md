@@ -31,8 +31,8 @@ git@github.com:liu-ningning/koa-practice.git
 
 #### 访问地址
 
-  + http://127.0.0.1:6000
-  + http://127.0.0.1:6000/demo
+  + http://127.0.0.1:6002
+  + http://127.0.0.1:6002/demo
 
 #### 注意事项
 
