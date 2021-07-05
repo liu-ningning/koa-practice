@@ -23,7 +23,8 @@ git@github.com:liu-ningning/koa-practice.git
 #### 开发环境
 
   + 克隆项目 - `$ git clone git@github.com:liu-ningning/koa-practice.git`
-  + 安装依赖 - `$ cd koa-practice && npm i`
+  + 安装依赖 - `$ cd koa-practice && npm i (若失败，请尝试 npm ci)`
+  + 首次启动 - `$ npm run watch-ts`
   + 启动项目 - `$ npm run start`
 
 开发依赖[eslint.org](https://eslint.org)，请使用支持它的编辑器。推荐[Visual Studio Code](https://code.visualstudio.com)编辑器。
