@@ -1,7 +1,7 @@
 {
   "name": "koa-practice",
   "version": "1.0.0",
-  "description": "A koa practice and want to look for a girlfriend...",
+  "description": "A koa practice",
   "private": true,
   "main": "bin/server.js",
   "engines": {
