@@ -1,0 +1,60 @@
+before_script:
+  - git clone git@github.com:liu-ningning/practice-yaml-shell.git
+
+.access_branch_template: &access_branch
+  only:
+    - master
+    - test
+
+variables:
+  deploys: /home/work/koa-practice
+  project: koa-practice
+  scripts: blued-yaml-shell
+  dingtalk: https://oapi.dingtalk.com/robot/send?access_token=XXX
+
+stages:
+  - install
+  - check
+  - deploy-development
+  - deploy-production
+
+cache:
+  key: ${CI_BUILD_REF_NAME}
+  paths:
+    - node_modules/
+    - version
+
+install:
+  <<: *access_branch
+  stage: install
+  script:
+    - bash $scripts/declare.sh
+    - bash $scripts/install.sh
+
+check:
+  <<: *access_branch
+  stage: check
+  script:
+    - bash $scripts/check.sh
+
+deploy-development:
+  stage: deploy-development
+  when: on_success
+  script:
+    - bash $scripts/rollback.sh "ssr"
+    - bash $scripts/deploy.sh "work@0.0.0.0" "ssr"
+  environment:
+    name: development
+  only:
+    - test
+
+deploy-production:
+  stage: deploy-production
+  when: manual
+  script:
+    - bash $scripts/rollback.sh "ssr"
+    - bash $scripts/deploy.sh "work@0.0.0.0 work@0.0.0.1" "ssr"
+  environment:
+    name: production
+  only:
+    - master
